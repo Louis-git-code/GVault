@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
+  <!-- Temporary, deliberately flat placeholder (4:5). Replace with images/hero-sneaker.jpg -->
+  <rect width="1200" height="1500" fill="#cfc7ba"/>
+  <ellipse cx="610" cy="1130" rx="400" ry="16" fill="#7d756a" opacity="0.28"/>
+  <path d="M222 1060 L214 1092 Q214 1118 246 1120 L940 1120 Q1000 1118 1004 1080 Q1006 1062 990 1058 Z" fill="#e6dfd2"/>
+  <path d="M232 1060 L236 910 Q238 872 272 866 Q330 860 372 880 Q404 896 430 884 Q470 840 540 832 Q590 830 640 868 Q700 912 770 942 Q860 978 930 1004 Q988 1024 994 1060 Z" fill="#b3aa9b"/>
+</svg>

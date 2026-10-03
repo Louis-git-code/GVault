@@ -1,0 +1,861 @@
+/* ===== BRAND COLORS: change a color here and it updates everywhere ===== */
+:root {
+  --ink:        #111111;
+  --ink-raised: #1A1A18;
+  --ivory:      #F2EDE3;
+  --gray:       #A6A29A;
+  --accent:     #C6A15B;
+  --gray-rgb:   166 162 154;
+  --accent-rgb: 198 161 91;
+  --line:        rgb(var(--gray-rgb) / 0.30);
+  --line-subtle: rgb(var(--gray-rgb) / 0.20);
+  --line-strong: rgb(var(--gray-rgb) / 0.60);
+}
+
+/* ===== BASE: applies to the whole page ===== */
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: var(--ink-raised);
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ===== NAV BAR (header only, so the footer nav is untouched) ===== */
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+
+header nav a {
+  color: var(--ivory);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+header nav a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ===== HERO SECTION ===== */
+#hero {
+  padding: 0;
+  text-align: left;
+  container-type: inline-size;
+  background: radial-gradient(ellipse at center, var(--ink-raised) 0%, var(--ink) 70%);
+}
+
+#hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--ivory);
+  margin: 0 0 16px;
+}
+
+#hero p {
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  max-width: 480px;
+  margin: 0 0 40px;
+}
+
+#hero a {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 14px 32px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+
+#hero a:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+/* ----- Hero: the wall, the baseline, and the plaque ----- */
+
+.hero-inner {
+  display: grid;
+}
+
+.hero-figure {
+  order: -1;
+  position: relative;
+  margin: 0;
+}
+
+.hero-frame {
+  height: 52vh;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.hero-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 72%;
+  animation: hero-image-enter 1.2s ease-out both;
+}
+
+.hero-figure figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 12px 16px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.hero-copy {
+  padding: 48px 24px 72px;
+}
+
+@keyframes hero-image-enter {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (min-width: 900px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-height: min(88vh, 860px);
+  }
+  .hero-figure {
+    order: 0;
+  }
+  .hero-frame {
+    height: 100%;
+    min-height: 0;
+  }
+  .hero-copy {
+    align-self: end;
+    padding: 0 64px 72px;
+    padding-left: max(24px, calc((100vw - 1100px) / 2));
+    padding-left: max(24px, calc((100cqw - 1100px) / 2));
+  }
+  .hero-figure figcaption {
+    left: -40px;
+    bottom: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-frame img {
+    animation: none;
+  }
+}
+
+/* ===== SHARED STYLES FOR EVERY SECTION BELOW THE HERO ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+main section:not(#hero) {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 96px 24px;
+}
+
+main section:not(#hero) > h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+main section:not(#hero) > h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  margin: 20px auto 0;
+}
+
+main section:not(#hero) > p {
+  text-align: center;
+  color: var(--gray);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== AUTHENTICITY (was The Standard) ===== */
+#authenticity ol {
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 56px 0 0;
+  padding: 0;
+}
+
+#authenticity li {
+  counter-increment: step;
+  border: 1px solid var(--line);
+  background: var(--ink-raised);
+  padding: 32px 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+#authenticity li::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+#authenticity li h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin: 0 0 12px;
+}
+
+#authenticity li p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+#authenticity li:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+/* ----- Authenticity: extra detail and hover life ----- */
+
+#authenticity li {
+  position: relative;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.3s;
+}
+
+#authenticity li::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+#authenticity li:hover::after {
+  transform: scaleX(1);
+}
+
+#authenticity li:hover {
+  box-shadow: 0 10px 30px rgb(var(--accent-rgb) / 0.12);
+}
+
+#authenticity li p.step-detail {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-subtle);
+  font-size: 0.85rem;
+}
+
+#authenticity li p.step-detail strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+#authenticity > p.standard-note {
+  max-width: 640px;
+  margin: 64px auto 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ivory);
+}
+
+/* ===== CURATION ===== */
+#curation ul {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+}
+
+#curation li {
+  border-left: 1px solid var(--line);
+  padding: 8px 0 8px 28px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gray);
+  transition: border-color 0.2s;
+}
+
+#curation li strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 12px;
+}
+
+#curation li:hover {
+  border-left-color: var(--accent);
+}
+
+#curation li p {
+  margin: 0;
+}
+
+#curation > p.curation-note {
+  max-width: 640px;
+  margin: 64px auto 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ivory);
+}
+
+/* ===== JOURNAL (was Culture) ===== */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 56px;
+  align-items: start;
+}
+
+.article-visual {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  border: 1px solid var(--line);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--accent);
+  background: linear-gradient(135deg, var(--ink-raised) 0%, var(--ink) 50%, rgb(var(--accent-rgb) / 0.3) 100%);
+  background-size: 200% 200%;
+  background-position: 0 0;
+  transition: background-position 0.8s ease, border-color 0.3s;
+}
+
+.article-grid article h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin: 24px 0 8px;
+}
+
+.article-grid article p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+.article-grid article a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.article-grid article a::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.2s;
+}
+
+.article-grid article:hover .article-visual {
+  background-position: 100% 100%;
+  border-color: var(--accent);
+}
+
+.article-grid article:hover a::after {
+  transform: translateX(6px);
+}
+
+/* ===== THE VAULT (was The Archive) ===== */
+#exhibit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.exhibit {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--ink-raised);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.exhibit:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+/* ----- Status badge ----- */
+.status {
+  align-self: flex-start;
+  margin: 0 0 16px;
+  padding: 6px 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+.status-sourcing {
+  border: 1px dashed var(--line-strong);
+  color: var(--gray);
+}
+
+.status-in-vault {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--ink);
+}
+
+/* ----- Image area (designed placeholder until you have photos) ----- */
+.exhibit-image {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid var(--line-subtle);
+  background: linear-gradient(135deg, var(--ink-raised), var(--ink));
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--gray);
+}
+
+/* ----- Text details ----- */
+.exhibit-number {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.exhibit h3 {
+  margin: 0 0 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+.exhibit-why,
+.exhibit-verification {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+.exhibit-why strong,
+.exhibit-verification strong {
+  color: var(--ivory);
+  font-weight: 500;
+}
+
+/* ----- Price and button, pinned to the bottom of every card ----- */
+.exhibit-price {
+  margin: auto 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-subtle);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.exhibit button {
+  padding: 14px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.exhibit button:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+/* ----- Vault: status key ----- */
+.status-key {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 640px;
+  margin: 40px auto 0;
+}
+
+.status-key p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.status-key .status {
+  width: 170px;
+  margin: 0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.status-archived {
+  border: 1px solid var(--line);
+  color: rgb(var(--gray-rgb) / 0.8);
+}
+
+/* ----- Vault: richer image placeholder ----- */
+.exhibit-image {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exhibit-image-number {
+  font-size: 4rem;
+  font-style: normal;
+  line-height: 1;
+  color: var(--accent);
+}
+
+/* ----- Vault: four-step progress tracker ----- */
+.progress {
+  list-style: none;
+  display: flex;
+  margin: 4px 0 16px;
+  padding: 0;
+}
+
+.progress li {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.progress li::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+}
+
+.progress li::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: calc(50% + 10px);
+  width: calc(100% - 20px);
+  height: 1px;
+  background: var(--line-subtle);
+}
+
+.progress li:last-child::after {
+  display: none;
+}
+
+.progress li.done {
+  color: var(--accent);
+}
+
+.progress li.done::before {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.progress li.done::after {
+  background: var(--accent);
+}
+
+/* ----- Vault: expandable record ----- */
+.exhibit details {
+  margin: 0 0 8px;
+}
+
+.exhibit summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 0;
+  border-top: 1px solid var(--line-subtle);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.exhibit summary::-webkit-details-marker {
+  display: none;
+}
+
+.exhibit summary::after {
+  content: "+";
+  float: right;
+}
+
+.exhibit details[open] summary::after {
+  content: "\2212";
+}
+
+.exhibit-sizes {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+.exhibit-sizes strong {
+  color: var(--ivory);
+  font-weight: 500;
+}
+
+/* ----- Vault: "Can't find your pair?" card ----- */
+.exhibit-request {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-style: dashed;
+  background: transparent;
+}
+
+.exhibit-request h3 {
+  margin-bottom: 12px;
+}
+
+.exhibit-request p {
+  margin: 0 0 24px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--gray);
+}
+
+.exhibit-request a {
+  padding: 14px 28px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+
+.exhibit-request a:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+/* ===== ABOUT ===== */
+
+main section#about > p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ivory);
+  max-width: 720px;
+  margin-top: 40px;
+}
+
+/* ===== SOURCE A PAIR (was Contact) ===== */
+#source-a-pair ul {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px 72px;
+  text-align: center;
+}
+
+#source-a-pair li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--ivory);
+  transition: color 0.2s;
+}
+
+#source-a-pair li span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+#source-a-pair li:hover {
+  color: var(--accent);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 32px;
+  border-top: 1px solid var(--line);
+  background: var(--ink-raised);
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+footer nav {
+  display: flex;
+  gap: 24px;
+}
+
+footer nav a {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer nav a:hover {
+  color: var(--accent);
+}
+
+/* ----- Journal: expandable "Read more" (replaces the old link style) ----- */
+.article-grid summary {
+  display: inline-block;
+  cursor: pointer;
+  list-style: none;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.article-grid summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-grid summary::after {
+  content: "+";
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.article-grid details[open] summary::after {
+  content: "\2212";
+}
+
+.article-grid details[open] > p {
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+.article-grid details[open] summary {
+  margin-bottom: 16px;
+}
+
+.article-grid details strong {
+  color: var(--ivory);
+  font-weight: 500;
+}
