@@ -10,24 +10,34 @@
   <!-- Fonts from Google Fonts (needs an internet connection) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Our styles live in style.css (keep it in the same folder as this file) -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=22">
+  <!-- defer waits until the HTML is ready, then runs script.js -->
+  <script src="script.js?v=8" defer></script>
 </head>
 
-<body>
+<body class="home">
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ========== 1. HEADER ========== -->
   <header id="top">
     <a href="#top" class="logo">GVAULT</a>
 
-    <nav>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-btn" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-open">Menu</span>
+      <span class="nav-toggle-close">Close</span>
+    </label>
+
+    <nav id="site-nav">
       <ul>
         <li><a href="#authenticity">Authenticity</a></li>
         <li><a href="#curation">Curation</a></li>
         <li><a href="#journal">Journal</a></li>
-        <li><a href="#vault">The Vault</a></li>
+        <li><a href="vault.html">The Vault</a></li>
         <li><a href="#source-a-pair">Source a Pair</a></li>
       </ul>
     </nav>
@@ -42,67 +52,85 @@
     -->
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
 
     <!-- ========== 2. HERO ========== -->
     <section id="hero">
-      <div class="hero-inner">
-
-        <div class="hero-copy">
-          <h1>Culture, verified.</h1>
-          <p>Every pair has a story. We prove it.</p>
-          <a href="#vault">Enter the Vault</a>
-        </div>
-
-        <!-- To use the real photograph later: change src to images/hero-sneaker.jpg
-             and rewrite the alt text to describe the pair. -->
-        <figure class="hero-figure">
-          <div class="hero-frame">
-            <img src="images/hero-placeholder.svg"
-                 alt="Placeholder for the hero sneaker photograph"
-                 width="1200" height="1500"
-                 fetchpriority="high">
-          </div>
-          <figcaption>Exhibit 001 — photograph to come</figcaption>
-        </figure>
-
+      <div class="hero-media">
+        <img src="images/hero.jpeg"
+             alt="Black Jordan Spizike sneakers on a stone plinth, photographed in low gallery light"
+             width="1080"
+             height="608"
+             fetchpriority="high">
       </div>
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Authenticity first / Zero Fuga</p>
+        <h1>Buy Smarter,<br><span class="hero-accent">Not Harder.</span></h1>
+        <p class="hero-lead">Curated, verified and sourced for those who value what's real.</p>
+        <a class="hero-cta" href="#vault">Explore the Vault</a>
+      </div>
+      <p class="hero-signature">Culture, verified.</p>
     </section>
 
     <!-- ========== 3. AUTHENTICITY (was The Standard) ========== -->
     <section id="authenticity">
-      <h2>Authenticity</h2>
-      <p>How every pair earns its place in the vault.</p>
+      <p class="section-label">Authenticity</p>
+      <h2>Know what <span class="headline-accent">you're buying.</span></h2>
+      <p>Every pair is sourced with authenticity as the priority. We focus on clear communication, considered sourcing and a process you understand before committing.</p>
 
-      <ol>
+      <ul class="trust-points">
         <li>
-          <h3>Source</h3>
-          <p>Pairs come only from trusted, traceable sources.</p>
-          <p class="step-detail"><strong>We check</strong> The seller's history, purchase records, and how the pair has been stored.</p>
+          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M8.2 12.2 10.8 14.8 15.8 9.4"></path>
+          </svg>
+          <div class="trust-copy">
+            <h3>Authenticity first</h3>
+            <p>Authenticity is the priority in how we source a pair.</p>
+          </div>
         </li>
         <li>
-          <h3>Inspect</h3>
-          <p>Every pair is examined by hand, up close.</p>
-          <p class="step-detail"><strong>We check</strong> Stitching, materials, shape, tags, and box labels.</p>
+          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M6 3.5h8.2L18.5 8v12.5H6z"></path>
+            <path d="M14.2 3.5V8H18.5"></path>
+            <path d="M8.5 12h5.5M8.5 15.2h3.6"></path>
+            <path d="M14.8 19.2 19.6 14.4l1.6 1.6-4.8 4.8h-1.6z"></path>
+          </svg>
+          <div class="trust-copy">
+            <h3>Clear before you commit</h3>
+            <p>You review the quote and terms before sourcing begins. An enquiry is not an order.</p>
+          </div>
         </li>
         <li>
-          <h3>Verify</h3>
-          <p>Each detail is compared against documented references.</p>
-          <p class="step-detail"><strong>We check</strong> Whether anything doesn't fit the pair's release, and we record what we find.</p>
+          <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M3.6 8.2 12 4.2l8.4 4-8.4 4z"></path>
+            <path d="M3.6 8.2v7.4L12 19.8v-7.6"></path>
+            <path d="M20.4 8.2v4.4"></path>
+            <path d="M15.2 16.2 17.2 18.2 21.2 14"></path>
+          </svg>
+          <div class="trust-copy">
+            <h3>Sourced for you</h3>
+            <p>We source pairs on request. Vault exhibits are examples, not listed stock.</p>
+          </div>
         </li>
-        <li>
-          <h3>Vault</h3>
-          <p>Verified pairs are photographed, catalogued, and sealed.</p>
-          <p class="step-detail"><strong>We record</strong> Detail photographs, the exhibit number, and the date it was verified.</p>
-        </li>
-      </ol>
-
-      <p class="standard-note">If a pair fails any step, it never enters the vault. Every exhibit carries its record, so you can see what was checked, not just that it was.</p>
+      </ul>
     </section>
 
     <!-- ========== 4. CURATION ========== -->
     <section id="curation">
-      <h2>Curation</h2>
+      <div class="curation-lockup">
+        <span class="curation-initial" aria-hidden="true">C</span>
+        <div class="curation-lines">
+          <h2>
+            <span class="curation-sr">Curation</span>
+            <span class="curation-kicker" aria-hidden="true">uration</span>
+          </h2>
+          <p class="curation-sub">
+            <span class="curation-sr">Chosen with intention.</span>
+            <span aria-hidden="true">hosen with <span class="headline-accent">intention.</span></span>
+          </p>
+        </div>
+      </div>
       <p>We don't stock everything. We select pairs that matter.</p>
 
       <ul>
@@ -129,13 +157,17 @@
 
     <!-- ========== 5. JOURNAL (was Culture) ========== -->
     <section id="journal">
-      <h2>Journal</h2>
+      <p class="section-label">Journal</p>
+      <h2>Beyond <span class="headline-accent">the pair.</span></h2>
       <p>Stories behind the releases, the eras, and the people.</p>
 
       <div class="article-grid">
 
         <article>
-          <div class="article-visual">Release</div>
+          <div class="article-visual">
+            <img src="images/journal/Release.png" alt="A worn pair of original red, white, and black Air Jordan 1 High sneakers.">
+          </div>
+          <p class="article-category">Release</p>
           <h3>The Air Jordan 1 and the "banned" shoe</h3>
           <p>How a black and red pair from 1985 changed what a basketball shoe could say.</p>
           <details>
@@ -147,19 +179,26 @@
         </article>
 
         <article>
-          <div class="article-visual">Era</div>
-          <h3>When hip-hop chose its own sneaker</h3>
-          <p>How a 1986 song turned a shell-toe Adidas into a cultural statement.</p>
+          <div class="article-visual">
+            <img src="images/journal/Era.png" alt="Four men in 1990s streetwear posing on a city street under an elevated train.">
+          </div>
+          <p class="article-category">Era</p>
+          <h3>When the streets made it their own</h3>
+          <p>Sneakers became a language of culture, identity, and self-expression</p>
           <details>
             <summary>Read more</summary>
-            <p>In the mid-1980s, Run-DMC made the Adidas Superstar part of their look, worn without laces and with the tongues out. In 1986 they recorded "My Adidas", and the brand took notice.</p>
-            <p>The story often told is that Adidas representatives saw fans at a concert hold up their sneakers when the song played, then signed the group to one of the first major sneaker endorsements for people outside sport. Until then, sneakers were sold on performance. After it, they could be sold on identity.</p>
-            <p><strong>Why it matters to us:</strong> vintage pairs age in ways that are hard to fake, in their materials, glue, and soles. Wear that fits a pair's age is part of the evidence, and details that don't fit the era are a warning sign.</p>
+            <p>Sneakers have always been about more than what we wear. They reflect where we come from, what we listen to, and the communities we belong to.</p>
+            <p>From the streets of New York to cities around the world, music, sports, and street style transformed sneakers into cultural symbols. Each generation made them its own, turning footwear into a language of identity, self-expression, and belonging</p>
+            <p>Over time, certain pairs become more than products. They become part of movements, memories, and moments that shaaped popular culture</p>
+            <p><strong>Why it matters to us:</strong> At GVault, we believe understanding a sneaker's cultural significance makes owning it more meaningful. Knowing the actual story behind a pair helps us appreciate more than its design or resale value.</p>
           </details>
         </article>
 
         <article>
-          <div class="article-visual">People</div>
+          <div class="article-visual">
+            <img src="images/journal/People.png" alt="Portrait of sneaker designer Tinker Hatfield, wearing glasses against a dark background.">
+          </div>
+          <p class="article-category">People</p>
           <h3>Tinker Hatfield, the architect behind the icons</h3>
           <p>The designer who brought architecture into the sneaker.</p>
           <details>
@@ -175,123 +214,161 @@
 
     <!-- ========== 6. THE VAULT (was The Archive) ========== -->
     <section id="vault">
-      <h2>The Vault</h2>
-      <p>Every pair here is an exhibit. Some are in the vault now, verified and photographed. Others we'll source for you, to the same standard. Either way, you'll see the evidence.</p>
+      <p class="section-label">The Vault</p>
+      <h2>Worth a <span class="headline-accent">closer look.</span></h2>
+      <p>Curated pairs, sourced on request.</p>
 
-      <div class="status-key">
-        <p><span class="status status-in-vault">IN THE VAULT</span> Verified, photographed, and ready to be yours.</p>
-        <p><span class="status status-sourcing">SOURCING REQUEST</span> Not in hand yet. Tell us you want it and we'll find it, then verify it before you pay.</p>
-        <p><span class="status status-archived">ARCHIVED</span> Sold. Kept on record as proof of what we've handled.</p>
+      <div class="vault-row">
+      <div class="vault-track" role="region" aria-label="Vault exhibits" tabindex="0">
+
+        <article class="exhibit">
+          <div class="exhibit-image">
+            <img src="images/vault/air jordan 1.png" alt="Air Jordan 1 High Chicago sneakers" width="750" height="1000">
+          </div>
+          <p class="exhibit-number">Exhibit 01</p>
+          <h3>Air Jordan 1 High "Chicago"</h3>
+          <p class="exhibit-year">1985</p>
+          <p class="exhibit-why">A landmark colourway rooted in basketball history.</p>
+          <p class="status status-sourcing">Source on request</p>
+          <a class="exhibit-action" href="#source-enquiry" aria-label="Open Source a Pair to request Air Jordan 1 High Chicago">Request this pair</a>
+        </article>
+
+        <article class="exhibit">
+          <div class="exhibit-image">
+            <img src="images/vault/adidas.png" alt="Adidas Superstar sneakers" width="1080" height="1080">
+          </div>
+          <p class="exhibit-number">Exhibit 02</p>
+          <h3>Adidas Superstar</h3>
+          <p class="exhibit-year">1970</p>
+          <p class="exhibit-why">A timeless classic that moved from the court into everyday culture.</p>
+          <p class="status status-sourcing">Source on request</p>
+          <a class="exhibit-action" href="#source-enquiry" aria-label="Open Source a Pair to request Adidas Superstar">Request this pair</a>
+        </article>
+
+        <article class="exhibit">
+          <div class="exhibit-image">
+            <img src="images/vault/air max.png" alt="Nike Air Max 1 sneakers" width="850" height="680">
+          </div>
+          <p class="exhibit-number">Exhibit 03</p>
+          <h3>Nike Air Max 1</h3>
+          <p class="exhibit-year">1987</p>
+          <p class="exhibit-why">A running icon known for its visible Air cushioning.</p>
+          <p class="status status-sourcing">Source on request</p>
+          <a class="exhibit-action" href="#source-enquiry" aria-label="Open Source a Pair to request Nike Air Max 1">Request this pair</a>
+        </article>
+
+        <article class="exhibit">
+          <div class="exhibit-image">
+            <img src="images/vault/new balance.png" alt="New Balance 2002R sneakers" width="690" height="1070">
+          </div>
+          <p class="exhibit-number">Exhibit 04</p>
+          <h3>New Balance 2002R</h3>
+          <p class="exhibit-why">A technical running silhouette with everyday appeal.</p>
+          <p class="status status-sourcing">Source on request</p>
+          <a class="exhibit-action" href="#source-enquiry" aria-label="Open Source a Pair to request New Balance 2002R">Request this pair</a>
+        </article>
+
       </div>
 
-      <!-- Later, JavaScript will build these cards from a product list. -->
-      <div id="exhibit-grid">
-
-        <article class="exhibit">
-          <p class="status status-sourcing">SOURCING REQUEST</p>
-          <div class="exhibit-image"><span class="exhibit-image-number">001</span>Reserved slot</div>
-          <p class="exhibit-number">Exhibit 001 · 1985</p>
-          <h3>Air Jordan 1 High "Chicago"</h3>
-          <p class="exhibit-why"><strong>Why it's here:</strong> The pair that began a lineage. Its colours changed what a basketball shoe could say.</p>
-
-          <ol class="progress" aria-label="Verification progress">
-            <li>Sourced</li>
-            <li>Inspected</li>
-            <li>Verified</li>
-            <li>Vaulted</li>
-          </ol>
-
-          <details class="exhibit-record">
-            <summary>View the record</summary>
-            <p class="exhibit-verification"><strong>What we'll verify:</strong> Shape and stance, stitching pattern, tag and label details, materials, and box label.</p>
-            <p class="exhibit-sizes"><strong>Sizes:</strong> Tell us yours and we'll source it.</p>
-          </details>
-
-          <p class="exhibit-price">Available on request</p>
-          <button>Request this pair</button>
-        </article>
-
-        <article class="exhibit">
-          <p class="status status-sourcing">SOURCING REQUEST</p>
-          <div class="exhibit-image"><span class="exhibit-image-number">002</span>Reserved slot</div>
-          <p class="exhibit-number">Exhibit 002 · 1970</p>
-          <h3>Adidas Superstar</h3>
-          <p class="exhibit-why"><strong>Why it's here:</strong> The shell-toe that hip-hop made its own.</p>
-
-          <ol class="progress" aria-label="Verification progress">
-            <li>Sourced</li>
-            <li>Inspected</li>
-            <li>Verified</li>
-            <li>Vaulted</li>
-          </ol>
-
-          <details class="exhibit-record">
-            <summary>View the record</summary>
-            <p class="exhibit-verification"><strong>What we'll verify:</strong> Shell toe shape, three-stripe placement, tongue and heel labels, sole pattern, and box label.</p>
-            <p class="exhibit-sizes"><strong>Sizes:</strong> Tell us yours and we'll source it.</p>
-          </details>
-
-          <p class="exhibit-price">Available on request</p>
-          <button>Request this pair</button>
-        </article>
-
-        <article class="exhibit">
-          <p class="status status-sourcing">SOURCING REQUEST</p>
-          <div class="exhibit-image"><span class="exhibit-image-number">003</span>Reserved slot</div>
-          <p class="exhibit-number">Exhibit 003 · 1987</p>
-          <h3>Nike Air Max 1</h3>
-          <p class="exhibit-why"><strong>Why it's here:</strong> The first visible Air unit, and the pair that put design on display.</p>
-
-          <ol class="progress" aria-label="Verification progress">
-            <li>Sourced</li>
-            <li>Inspected</li>
-            <li>Verified</li>
-            <li>Vaulted</li>
-          </ol>
-
-          <details class="exhibit-record">
-            <summary>View the record</summary>
-            <p class="exhibit-verification"><strong>What we'll verify:</strong> Window shape, midsole and Air unit, stitching, tags, and box label.</p>
-            <p class="exhibit-sizes"><strong>Sizes:</strong> Tell us yours and we'll source it.</p>
-          </details>
-
-          <p class="exhibit-price">Available on request</p>
-          <button>Request this pair</button>
-        </article>
-
-        <!-- The last card invites a request for a pair that isn't listed -->
-        <article class="exhibit exhibit-request">
-          <h3>Can't find your pair?</h3>
-          <p>Tell us what you're looking for. We'll source it, verify it, and add it to the vault.</p>
-          <a href="#source-a-pair">Source a Pair</a>
-        </article>
-
-        <!--
-          TEMPLATE FOR A PAIR THAT HAS ARRIVED (only use once you really hold the pair):
-          1. Change the badge to:  <p class="status status-in-vault">IN THE VAULT</p>
-          2. Add class "done" to the progress steps that are really complete:  <li class="done">Sourced</li>
-          3. Change "What we'll verify" to "Verification record" and write what you actually found.
-          4. Replace the price text and change the button to "Add to Vault".
-        -->
-
+      <p class="vault-explore"><a class="vault-explore-btn" href="vault.html">View All Exhibits</a></p>
       </div>
     </section>
 
     <!-- ========== 7. ABOUT ========== -->
     <section id="about">
-      <h2>About GVault</h2>
-      <p>GVault is an authenticity-first sneaker brand. We help people discover, understand, and own genuine sneakers with confidence.</p>
+      <p class="about-label">About GVault</p>
+      <h2>A better way to <span class="headline-accent">find your pair.</span></h2>
+      <p class="about-intro">GVault helps you source the sneakers you want, with thoughtful curation and clarity at every step. Tell us what you're looking for, and we'll explore sourcing options before confirming the details.</p>
     </section>
 
     <!-- ========== 8. SOURCE A PAIR (was Contact) ========== -->
     <section id="source-a-pair">
-      <h2>Source a Pair</h2>
-      <p>Looking for a specific pair? Tell us and we'll source it.</p>
+      <p class="source-label">Source a Pair</p>
+      <h2>Your next pair <span class="headline-accent">starts here.</span></h2>
+      <p class="source-lead">Tell us the pair you're looking for. We confirm the quote and terms before you commit. An enquiry is not an order, and no payment is taken here.</p>
+      <ol class="source-steps">
+        <li>
+          <p class="source-step-num">01</p>
+          <h3>Tell us the pair</h3>
+          <p>Share the model, size, and any notes that will help us source it. Add a colourway if you have a specific version in mind.</p>
+        </li>
+        <li>
+          <p class="source-step-num">02</p>
+          <h3>Review the quote</h3>
+          <p>We'll research sourcing options, then confirm the total price, expected delivery window, and payment terms. Where available, that may include an agreed initial payment and the remaining balance when the pair arrives.</p>
+        </li>
+        <li>
+          <p class="source-step-num">03</p>
+          <h3>Decide with clarity</h3>
+          <p>Review the confirmed quote and terms. Sourcing begins only after you accept them and make the agreed initial payment. Submitting an enquiry does not confirm an order.</p>
+        </li>
+      </ol>
 
-      <ul>
-        <li><span>WhatsApp</span>your number here</li>
-        <li><span>Instagram</span>@yourhandle</li>
-        <li><span>Email</span>you@example.com</li>
+      <p class="source-cta"><a id="start-enquiry" href="#source-enquiry">Start a sourcing enquiry</a></p>
+
+      <form id="source-enquiry" class="source-form" action="https://wa.me/2347069758371" method="get" novalidate>
+        <p class="source-form-intro">Required fields are marked. Colourway, name, and budget are optional. We do not take payment through this form.</p>
+
+        <div class="source-field">
+          <label for="enquiry-model">Sneaker model <span class="source-required">(required)</span></label>
+          <input id="enquiry-model" name="model" type="text" autocomplete="off" required maxlength="120" aria-required="true" aria-describedby="enquiry-prefill">
+          <p id="enquiry-prefill" class="source-hint" hidden>The model was filled from the Vault exhibit you requested. You can edit it before sending.</p>
+        </div>
+
+        <div class="source-field-row">
+          <div class="source-field">
+            <label for="enquiry-size">Shoe size <span class="source-required">(required)</span></label>
+            <input id="enquiry-size" name="size" type="text" inputmode="decimal" autocomplete="off" required maxlength="12" placeholder="e.g. 8.5" aria-required="true" aria-describedby="enquiry-size-hint">
+            <p id="enquiry-size-hint" class="source-hint">Enter the number only, then choose the sizing system.</p>
+          </div>
+          <div class="source-field">
+            <label for="enquiry-size-system">Sizing system <span class="source-required">(required)</span></label>
+            <select id="enquiry-size-system" name="size-system" required aria-required="true">
+              <option value="UK" selected>UK</option>
+              <option value="US">US</option>
+              <option value="EU">EU</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="source-field">
+          <label for="enquiry-colourway">Preferred colourway <span class="source-optional">(optional)</span></label>
+          <input id="enquiry-colourway" name="colourway" type="text" autocomplete="off" maxlength="120" aria-describedby="enquiry-colourway-hint">
+          <p id="enquiry-colourway-hint" class="source-hint">Add a colourway if you have a specific version in mind.</p>
+        </div>
+
+        <div class="source-field">
+          <label for="enquiry-name">Your name <span class="source-optional">(optional)</span></label>
+          <input id="enquiry-name" name="name" type="text" autocomplete="name" maxlength="80">
+        </div>
+
+        <div class="source-field">
+          <label for="enquiry-budget">Preferred budget (NGN) <span class="source-optional">(optional)</span></label>
+          <input id="enquiry-budget" name="budget" type="text" inputmode="numeric" autocomplete="off" maxlength="20" aria-describedby="enquiry-budget-hint">
+          <p id="enquiry-budget-hint" class="source-hint">A guide for sourcing — not a guaranteed or confirmed final price.</p>
+        </div>
+
+        <div class="source-field">
+          <label for="enquiry-notes">Additional requirements <span class="source-optional">(optional)</span></label>
+          <textarea id="enquiry-notes" name="notes" rows="4" maxlength="500"></textarea>
+        </div>
+
+        <p id="enquiry-status" class="enquiry-status" role="status" aria-live="polite" hidden></p>
+
+        <button type="submit" class="source-submit">Send enquiry via WhatsApp</button>
+        <p class="source-form-note">WhatsApp will open with a draft so you can review it before sending. Submitting an enquiry does not obligate you to accept the eventual quote, and it is not a confirmed order.</p>
+
+        <div id="enquiry-fallback" class="enquiry-fallback" hidden>
+          <p>WhatsApp did not open in this browser. Use the link below, or copy the message and send it to +2347069758371.</p>
+          <p><a id="enquiry-fallback-link" href="https://wa.me/2347069758371" target="_blank" rel="noopener noreferrer">Open WhatsApp with this enquiry</a></p>
+          <label for="enquiry-fallback-copy">Enquiry message</label>
+          <textarea id="enquiry-fallback-copy" rows="10" readonly></textarea>
+        </div>
+      </form>
+      <ul class="source-contacts" id="source-contacts">
+        <li><a href="https://wa.me/2347069758371" target="_blank" rel="noopener noreferrer">WhatsApp <span>+2347069758371</span></a></li>
+        <li><a href="https://www.instagram.com/gvault_official/" target="_blank" rel="noopener noreferrer">Instagram <span>@gvault_official</span></a></li>
+        <li><a href="mailto:gvaulthq@gmail.com">Email <span>gvaulthq@gmail.com</span></a></li>
       </ul>
     </section>
 
@@ -299,12 +376,31 @@
 
   <!-- ========== 9. FOOTER ========== -->
   <footer>
-    <p>&copy; 2026 GVault. Culture, verified.</p>
-    <nav>
-      <a href="#authenticity">Authenticity</a>
-      <a href="#vault">The Vault</a>
-      <a href="#source-a-pair">Source a Pair</a>
-    </nav>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="#top" class="footer-logo">GVAULT</a>
+        <p class="footer-tagline">Culture, verified.</p>
+      </div>
+      <div class="footer-groups">
+        <nav class="footer-nav" aria-labelledby="footer-explore-heading">
+          <p class="footer-heading" id="footer-explore-heading">Explore</p>
+          <ul>
+            <li><a href="#authenticity">Authenticity</a></li>
+            <li><a href="vault.html">The Vault</a></li>
+            <li><a href="#source-a-pair">Source a Pair</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-nav" aria-labelledby="footer-connect-heading">
+          <p class="footer-heading" id="footer-connect-heading">Connect</p>
+          <ul>
+            <li><a href="https://wa.me/2347069758371" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/gvault_official/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="mailto:gvaulthq@gmail.com">Email</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; 2026 GVault.</p>
   </footer>
 
 </body>
